@@ -14,6 +14,7 @@ ext install codam-norminette
 ```
 
 If you want to integrate norminette+, check install instructions via bit.ly/norminette
+
 After installation, configure `codam-norminette.command2` in VSCode to point to norminette+ (default `python ~/norminette+/run.py`)
 
 ## Usage
