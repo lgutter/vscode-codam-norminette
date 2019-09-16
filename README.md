@@ -28,7 +28,7 @@ If there are changes to the file, the norm is automatically checked on save
   "codam-norminette.command": "norminette",
   "codam-norminette.command2": "",
   "codam-norminette.fileregex": "\\.[ch]$",
-  "codam-norminette.fileregex2": "(\\.[ch])|Makefile|makefile|GNUmakefile$"
+  "codam-norminette.fileregex2": "(\\.[c])|Makefile|makefile|GNUmakefile$"
 }
 ```
 
