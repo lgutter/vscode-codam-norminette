@@ -58,7 +58,13 @@ export function activate(context: vscode.ExtensionContext) {
 			data.forEach(e => {
 				let range;
 				let decoration;
-				if (
+				if (e.errorText.search(/[Ee]mpty line/gi) != -1) {
+					range = activeEditor.document.lineAt(0).range;
+					decoration = {
+						range: range,
+						hoverMessage: "**" + e.fullText + "**"
+					};
+				} else if (
 					!e.col ||
 					!activeEditor.document.getWordRangeAtPosition(
 						new vscode.Position(e.line, e.col)
@@ -67,7 +73,7 @@ export function activate(context: vscode.ExtensionContext) {
 					range = activeEditor.document.lineAt(e.line).range;
 					decoration = {
 						range: range,
-						hoverMessage: "Error: **" + e.errorText + "**"
+						hoverMessage: "**Error:" + e.errorText + "**"
 					};
 				} else {
 					range = activeEditor.document.getWordRangeAtPosition(
@@ -75,7 +81,7 @@ export function activate(context: vscode.ExtensionContext) {
 					);
 					decoration = {
 						range: range,
-						hoverMessage: "Error: **" + e.errorText + "**"
+						hoverMessage: "**Error:" + e.errorText + "**"
 					};
 				}
 				errors.push(decoration);
