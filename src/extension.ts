@@ -7,6 +7,9 @@ export function activate(context: vscode.ExtensionContext) {
 		overviewRulerColor: 'red',
 		overviewRulerLane: vscode.OverviewRulerLane.Right,
 		backgroundColor: 'rgba(255,0,0,0.2)',
+		//gutterIconPath REQUIRES ABSOLUTE PATH, DON'T FORGET  TO CHANGE!
+		gutterIconPath: "/Users/lgutter/Projects/vscode-codam-norminette/error.png",
+		gutterIconSize: "contain",
 	})
 
 	let activeEditor = vscode.window.activeTextEditor
@@ -58,13 +61,14 @@ export function activate(context: vscode.ExtensionContext) {
 			data.forEach(e => {
 				let range;
 				let decoration;
-				if (e.errorText.search(/[Ee]mpty line/gi) != -1) {
-					range = activeEditor.document.lineAt(0).range;
-					decoration = {
-						range: range,
-						hoverMessage: "**" + e.fullText + "**"
-					};
-				} else if (
+				// if (e.errorText.search(/[Ee]mpty line/gi) != -1) {
+				// 	range = activeEditor.document.lineAt(e.line).range;
+				// 	decoration = {
+				// 		range: range,
+				// 		hoverMessage: "**" + e.fullText + "**",
+				// 	};
+				// } else
+				if (
 					!e.col ||
 					!activeEditor.document.getWordRangeAtPosition(
 						new vscode.Position(e.line, e.col)
